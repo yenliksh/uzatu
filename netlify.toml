@@ -3,8 +3,16 @@
   publish = "dist"
   functions = "netlify/functions"
 
+# API → Netlify Function
 [[redirects]]
   from = "/api/rsvp"
   to = "/.netlify/functions/rsvp"
   status = 200
   force = true
+
+# SPA: все маршруты (в т.ч. /admin) отдавать index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false

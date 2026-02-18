@@ -59,7 +59,11 @@ exports.handler = async (event, context) => {
       return jsonResponse({ success: true });
     } catch (e) {
       console.error(e);
-      return jsonResponse({ error: "Сақтау қатесі" }, 500);
+      const message = e.message || String(e);
+      return jsonResponse(
+        { error: "Сақтау қатесі", detail: message },
+        500
+      );
     }
   }
 
@@ -85,7 +89,11 @@ exports.handler = async (event, context) => {
       return jsonResponse(list);
     } catch (e) {
       console.error(e);
-      return jsonResponse({ error: "Жүктеу қатесі" }, 500);
+      const message = e.message || String(e);
+      return jsonResponse(
+        { error: "Жүктеу қатесі", detail: message },
+        500
+      );
     }
   }
 
