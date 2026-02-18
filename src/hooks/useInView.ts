@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-export function useInView(options?: { once?: boolean; margin?: string }) {
-  const ref = useRef<HTMLElement>(null);
+export function useInView<T extends HTMLElement = HTMLElement>(options?: { once?: boolean; margin?: string }) {
+  const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
   const { once = true, margin = "0px 0px -80px 0px" } = options ?? {};
 

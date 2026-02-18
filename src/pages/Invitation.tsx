@@ -14,9 +14,9 @@ export default function Invitation() {
   const [message, setMessage] = useState("");
   const [state, setState] = useState<SubmitState>("idle");
   const [errorText, setErrorText] = useState("");
-  const whenWhereInView = useInView();
-  const sectionInView = useInView();
-  const bottomInView = useInView();
+  const whenWhereInView = useInView<HTMLElement>();
+  const sectionInView = useInView<HTMLElement>();
+  const bottomInView = useInView<HTMLDivElement>();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
