@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./Invitation.module.css";
 import { OrnamentLine, OrnamentCorner, OrnamentDivider } from "../components/Ornaments";
+import Countdown from "../components/Countdown";
+import { useInView } from "../hooks/useInView";
 
 type SubmitState = "idle" | "sending" | "success" | "error";
 
@@ -12,6 +14,9 @@ export default function Invitation() {
   const [message, setMessage] = useState("");
   const [state, setState] = useState<SubmitState>("idle");
   const [errorText, setErrorText] = useState("");
+  const whenWhereInView = useInView();
+  const sectionInView = useInView();
+  const bottomInView = useInView();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -51,11 +56,11 @@ export default function Invitation() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <div className={styles.heroOrnamentTop} aria-hidden>
+        <div className={`${styles.heroOrnamentTop} ${styles.heroAnim}`} aria-hidden style={{ animationDelay: "0.1s" }}>
           <OrnamentLine className={styles.ornamentLine} />
         </div>
         <div className={styles.heroContent}>
-          <div className={styles.heroText}>
+          <div className={`${styles.heroText} ${styles.heroAnim}`} style={{ animationDelay: "0.2s" }}>
             <OrnamentCorner className={styles.heroCorner} />
             <div className={styles.heroCopy}>
               <div className={styles.heroEventBlock}>
@@ -70,7 +75,7 @@ export default function Invitation() {
               </p>
             </div>
           </div>
-          <div className={styles.heroImageWrap}>
+          <div className={`${styles.heroImageWrap} ${styles.heroAnim}`} style={{ animationDelay: "0.35s" }}>
             <img
               src="/bride.png"
               alt="Ұлттық салт-дәстүрлі келіншек киімі"
@@ -78,16 +83,18 @@ export default function Invitation() {
             />
           </div>
         </div>
-        <div className={styles.heroOrnamentBottom} aria-hidden>
+        <div className={`${styles.heroOrnamentBottom} ${styles.heroAnim}`} aria-hidden style={{ animationDelay: "0.45s" }}>
           <OrnamentLine className={styles.ornamentLine} />
         </div>
       </section>
 
-      <OrnamentDivider />
+      <div className={styles.dividerWrap}>
+        <OrnamentDivider />
+      </div>
 
-      <section className={styles.whenWhere}>
+      <section ref={whenWhereInView.ref} className={`${styles.whenWhere} ${whenWhereInView.inView ? styles.animateIn : ""}`}>
         <h2 className={styles.whenWhereTitle}>Мекен жайымыз</h2>
-        <div className={styles.whenWhereCard}>
+        <div className={`${styles.whenWhereCard} ${styles.cardHover}`}>
           <OrnamentCorner className={styles.cardCornerTL} />
           <OrnamentCorner flip className={styles.cardCornerTR} />
           <OrnamentCorner flip className={styles.cardCornerBL} />
@@ -112,14 +119,14 @@ export default function Invitation() {
         </div>
       </section>
 
-      <section className={styles.section}>
+      <section ref={sectionInView.ref} className={`${styles.section} ${sectionInView.inView ? styles.animateIn : ""}`}>
         <h2 className={styles.sectionTitle}>
           Қатысатыныңызды растаңыз
         </h2>
         <p className={styles.sectionIntro}>
           Тойға қонақ болып келетініңізді білу біз үшін өте маңызды. Төмендегі форманы толтырып, жауабыңызды жіберіңіз.
         </p>
-        <div className={styles.sectionCard}>
+        <div className={`${styles.sectionCard} ${styles.cardHover}`}>
           <OrnamentCorner className={styles.cardCornerTL} />
           <OrnamentCorner flip className={styles.cardCornerTR} />
           <OrnamentCorner flip className={styles.cardCornerBL} />
@@ -218,8 +225,12 @@ export default function Invitation() {
         </div>
       </section>
 
-      <OrnamentDivider />
-      <footer className={styles.footer}>
+      <div className={styles.dividerWrap}>
+        <OrnamentDivider />
+      </div>
+      <div ref={bottomInView.ref} className={bottomInView.inView ? styles.animateIn : ""}>
+        <Countdown />
+        <footer className={styles.footer}>
         <div className={styles.footerOrnament} aria-hidden>
           <OrnamentLine className={styles.ornamentLineLight} />
         </div>
@@ -228,6 +239,7 @@ export default function Invitation() {
           Той иелері: <strong>Талант</strong> — <strong>Ақмарал</strong>
         </p>
       </footer>
+      </div>
     </div>
   );
 }

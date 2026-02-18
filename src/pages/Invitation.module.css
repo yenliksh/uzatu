@@ -1,3 +1,27 @@
+/* Анимации появления */
+.heroAnim {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.animateIn {
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.dividerWrap {
+  animation: fadeIn 0.6s ease-out both;
+}
+
+.cardHover {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.cardHover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 48px rgba(44, 36, 32, 0.12),
+    0 0 0 1px rgba(201, 162, 39, 0.18);
+}
+
 .page {
   min-height: 100vh;
   background: var(--color-bg);
@@ -152,6 +176,12 @@
   border-radius: 4px;
   outline: 1px solid rgba(201, 162, 39, 0.25);
   outline-offset: 8px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.heroImageWrap:hover .heroImage {
+  transform: scale(1.02);
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
 }
 
 @media (max-width: 700px) {
@@ -287,7 +317,7 @@
   font-size: 1rem;
   color: var(--color-text);
   background: #fff;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
 }
 
 .input:focus,
@@ -296,6 +326,7 @@
   outline: none;
   border-color: rgba(201, 162, 39, 0.5);
   box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.12);
+  transform: translateY(-1px);
 }
 
 .input::placeholder,
@@ -357,8 +388,13 @@
 }
 
 .submit:hover:not(:disabled) {
-  filter: brightness(1.08);
-  transform: translateY(-1px);
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 115, 85, 0.45);
+}
+
+.submit:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .submit:disabled {
