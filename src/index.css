@@ -1,0 +1,42 @@
+:root {
+  --color-bg: #faf8f5;
+  --color-text: #2c2420;
+  --color-text-soft: #5c534a;
+  --color-accent: #8b7355;
+  --color-accent-light: #c4a77d;
+  --color-gold: #c9a227;
+  --color-hero-text: #f2ebe3;
+  --color-hero-muted: rgba(242, 235, 227, 0.88);
+  --color-success: #5a7d5a;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}

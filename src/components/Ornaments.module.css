@@ -1,0 +1,67 @@
+.borderWrap {
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  border-radius: inherit;
+}
+
+.borderPattern {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 8px,
+    rgba(201, 162, 39, 0.08) 8px,
+    rgba(201, 162, 39, 0.08) 10px
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+.dividerWrap {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
+}
+
+.dividerSvg {
+  width: 120px;
+  height: 32px;
+  color: var(--ornament-gold, #c9a227);
+}
+
+.cornerTopLeft {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 48px;
+  height: 48px;
+}
+
+.cornerTopRight {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 48px;
+  height: 48px;
+}
+
+.cornerBottomLeft {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  width: 48px;
+  height: 48px;
+}
+
+.cornerBottomRight {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 48px;
+  height: 48px;
+}
